@@ -22,22 +22,20 @@ public class FizzBuzzTest {
 
     @Property
     public void should_return_Fizz_when_number_is_multiple_of_3(@PositiveAndMulitpleOf(3) int value) throws Exception {
-        assumeTrue(value > 0 && value % 3 == 0 && value % 5 != 0);
+        assumeTrue(value % 5 != 0);
 
         assertThat(fizzbuzz(value)).isEqualTo("Fizz");
     }
 
     @Property
     public void should_return_Buzz_when_number_is_multiple_of_5(@PositiveAndMulitpleOf(5) int value) throws Exception {
-        assumeTrue(value > 0 && value % 5 == 0 && value % 3 != 0);
+        assumeTrue(value % 3 != 0);
 
         assertThat(fizzbuzz(value)).isEqualTo("Buzz");
     }
 
     @Property
     public void should_return_FizzBuzz_when_number_is_multiple_of_3_and_multiple_of_5(@PositiveAndMulitpleOf(15) int value) throws Exception {
-        assumeTrue(value > 0 && value % 5 == 0 && value % 3 == 0);
-
         assertThat(fizzbuzz(value)).isEqualTo("FizzBuzz");
     }
 }
