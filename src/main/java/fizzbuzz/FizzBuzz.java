@@ -1,16 +1,24 @@
 package fizzbuzz;
 
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static fizzbuzz.FizzBuzz.Rule.rule;
 import static java.util.stream.Collectors.joining;
 
 public class FizzBuzz {
+
+    public static void main(String[] args) {
+        IntStream.rangeClosed(0, Integer.parseInt(args[0]))
+                .mapToObj(FizzBuzz::fizzbuzz).forEach(System.out::println);
+    }
+
     public static String fizzbuzz(int value) {
 
         RuleChecker ruleChecker = RuleChecker.fromValue(value);
-        return mayBe(value, Stream.of(rule(3, "Fizz"), rule(5, "Buzz")).filter(ruleChecker).map(rule -> rule.s).collect(joining()));
+        return mayBe(value, Stream.of(rule(3, "Fizz"), rule(5, "Buzz"))
+                .filter(ruleChecker).map(rule -> rule.s).collect(joining()));
 
     }
 
