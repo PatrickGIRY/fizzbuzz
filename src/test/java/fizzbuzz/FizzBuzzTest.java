@@ -22,16 +22,12 @@ public class FizzBuzzTest {
 
     @Property
     public void should_return_Fizz_when_number_is_multiple_of_3(@PositiveAndMulitpleOf(3) int value) throws Exception {
-        assumeTrue(value % 5 != 0);
-
-        assertThat(fizzbuzz(value)).isEqualTo("Fizz");
+        assertThat(fizzbuzz(value)).startsWith("Fizz");
     }
 
     @Property
     public void should_return_Buzz_when_number_is_multiple_of_5(@PositiveAndMulitpleOf(5) int value) throws Exception {
-        assumeTrue(value % 3 != 0);
-
-        assertThat(fizzbuzz(value)).isEqualTo("Buzz");
+        assertThat(fizzbuzz(value)).endsWith("Buzz");
     }
 
     @Property
